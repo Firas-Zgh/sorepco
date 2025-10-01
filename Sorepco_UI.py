@@ -431,7 +431,20 @@ def run_workflow_webhook(files):
 st.markdown("""
 <div class="hero-container">
     <div class="hero-card">
-        <h1 class="hero-title">SOREPCO AUTOMATION</h1>
+        <div style="
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            line-height: 1.2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        ">
+            SOREPCO AUTOMATION
+        </div>
         <p class="hero-subtitle">Interface nouvelle génération pour l'extraction automatique et l'attribution des codes NGP</p>
     </div>
 </div>
