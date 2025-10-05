@@ -116,108 +116,105 @@ header {visibility: hidden;}
 
 /* === FILE UPLOADER STYLING === */
 .upload-container {
-    max-width: 700px;
+    max-width: 600px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     z-index: 1;
     position: relative;
 }
 
-/* Target all file uploader elements */
+/* Hide default Streamlit file uploader completely */
 [data-testid="stFileUploader"] {
-    z-index: 1 !important;
+    position: relative;
+    z-index: 1;
 }
 
 [data-testid="stFileUploader"] > div {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-[data-testid="stFileUploaderDropzone"] {
-    border: 3px dashed rgba(139, 92, 246, 0.3) !important;
     background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
-    border-radius: 32px !important;
-    padding: 4rem 3rem !important;
-    text-align: center !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    min-height: 350px !important;
-    max-width: 650px !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+    border-radius: 24px !important;
+    border: 3px dashed rgba(139, 92, 246, 0.4) !important;
+    padding: 3rem 2.5rem !important;
+    transition: all 0.3s ease !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
-[data-testid="stFileUploaderDropzone"]:hover {
-    border-color: #8b5cf6 !important;
-    transform: translateY(-4px) !important;
-    box-shadow: 0 12px 48px rgba(139, 92, 246, 0.25) !important;
-    background: rgba(139, 92, 246, 0.08) !important;
+[data-testid="stFileUploader"] > div:hover {
+    border-color: rgba(139, 92, 246, 0.7) !important;
+    background: rgba(139, 92, 246, 0.1) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2) !important;
 }
 
-/* Hide default upload content */
+/* Style the dropzone */
+[data-testid="stFileUploaderDropzone"] {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: auto !important;
+}
+
 [data-testid="stFileUploaderDropzone"] > div {
-    display: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
 }
 
-[data-testid="stFileUploaderDropzone"] section {
-    display: none !important;
+/* Folder icon */
+[data-testid="stFileUploaderDropzone"] svg {
+    width: 80px !important;
+    height: 80px !important;
+    color: #8b5cf6 !important;
+    opacity: 0.9 !important;
 }
 
-/* Custom folder icon */
-[data-testid="stFileUploaderDropzone"]::before {
-    content: '📁';
-    font-size: 5rem;
-    display: block;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    transition: all 0.3s ease;
-    filter: grayscale(0%) hue-rotate(250deg);
+/* Upload text styling */
+[data-testid="stFileUploaderDropzone"] small {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    color: #d1d5db !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
 }
 
-[data-testid="stFileUploaderDropzone"]:hover::before {
-    opacity: 1;
-    transform: scale(1.08);
-    filter: grayscale(0%) hue-rotate(250deg) brightness(1.2);
+/* OR divider styling */
+[data-testid="stFileUploaderDropzone"] > div > div {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin: 1rem 0 !important;
 }
 
-/* Upload text */
-[data-testid="stFileUploaderDropzone"]::after {
-    content: 'Glissez-déposez vos fichiers PDF ici\\Aou cliquez pour les sélectionner';
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #e5e7eb;
-    white-space: pre-line;
-    text-align: center;
-    line-height: 1.8;
-    margin-top: 0.5rem;
+[data-testid="stFileUploaderDropzone"] > div > div::before,
+[data-testid="stFileUploaderDropzone"] > div > div::after {
+    content: '' !important;
+    flex: 1 !important;
+    height: 1px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Browse button styling */
-[data-testid="stFileUploaderDropzone"] button,
+/* Browse files button */
 [data-testid="stFileUploader"] button {
     background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
     color: white !important;
     border: none !important;
-    border-radius: 16px !important;
-    padding: 0.9rem 2.5rem !important;
-    font-size: 1.05rem !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 2.5rem !important;
+    font-size: 1rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3) !important;
-    margin-top: 1.5rem !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35) !important;
+    margin-top: 0.5rem !important;
 }
 
-[data-testid="stFileUploaderDropzone"] button:hover,
 [data-testid="stFileUploader"] button:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 28px rgba(139, 92, 246, 0.5) !important;
+    background: linear-gradient(135deg, #9b6cf7 0%, #b865f8 100%) !important;
 }
 
 /* === BUTTON STYLING === */
