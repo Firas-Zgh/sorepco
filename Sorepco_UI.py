@@ -122,6 +122,38 @@ header {visibility: hidden;}
     position: relative;
 }
 
+/* === FINAL nuke-the-row fix === */
+
+/* 1️⃣ Grab the drop-zone wrapper itself */
+div[data-testid="stFileUploadDropzone"] {
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100% !important;
+}
+
+/* 2️⃣ Any inner flex-rows → columns */
+div[data-testid="stFileUploadDropzone"] [style*="flex-direction: row"] {
+    flex-direction:column !important;
+    align-items:center !important;
+}
+
+/* 3️⃣ Kill the huge default min-height so box isn’t ginormous */
+div[data-testid="stFileUploadDropzone"] > div:first-child {
+    min-height:unset !important;
+}
+
+/* 4️⃣ Center the text block (helper label) */
+div[data-testid="stFileUploadDropzone"] p,
+div[data-testid="stFileUploadDropzone"] span {
+    text-align:center !important;
+}
+
+/* 5️⃣ Shrink the OR gap a bit */
+[data-testid="stFileUploader"] section::before { margin-top:.5rem!important; }
+[data-testid="stFileUploader"] section::after  { margin:.2rem 0 .6rem 0!important; }
+
 /* Outer <section> that Streamlit renders */
 [data-testid="stFileUploader"] section{
     background: rgba(255,255,255,0.08)!important;
