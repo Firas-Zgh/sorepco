@@ -147,14 +147,24 @@ header {visibility: hidden;}
     box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25) !important;
 }
 
-/* Force vertical centering */
-[data-testid="stFileUploader"] section > div {
+/* Force vertical centering - target all nested divs */
+[data-testid="stFileUploader"] section > div,
+[data-testid="stFileUploader"] section > div > div,
+[data-testid="stFileUploader"] section div[data-testid="stFileUploaderDropzone"],
+[data-testid="stFileUploader"] section div[data-testid="stFileUploaderDropzone"] > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
     gap: 1.5rem !important;
+    width: 100% !important;
+}
+
+/* Remove any flex-row layouts */
+[data-testid="stFileUploader"] section div[style*="flex-direction: row"],
+[data-testid="stFileUploader"] section div[style*="display: flex"] {
+    flex-direction: column !important;
 }
 
 /* Icon styling */
@@ -162,18 +172,29 @@ header {visibility: hidden;}
     width: 70px !important;
     height: 70px !important;
     color: #8b5cf6 !important;
-    margin-bottom: 0.5rem !important;
+    margin: 0 auto 1rem auto !important;
+    display: block !important;
 }
 
 /* Text styling */
 [data-testid="stFileUploader"] section small,
-[data-testid="stFileUploader"] section span {
+[data-testid="stFileUploader"] section span,
+[data-testid="stFileUploader"] section p,
+[data-testid="stFileUploader"] section label {
     font-size: 1.1rem !important;
     font-weight: 500 !important;
     color: #d1d5db !important;
     text-align: center !important;
     display: block !important;
     width: 100% !important;
+    margin: 0.3rem 0 !important;
+}
+
+/* Hide any extra margin/padding elements */
+[data-testid="stFileUploader"] section > div > div[style*="margin"],
+[data-testid="stFileUploader"] section > div > div[style*="padding"] {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* Button styling */
@@ -188,7 +209,7 @@ header {visibility: hidden;}
     cursor: pointer !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4) !important;
-    margin: 0 auto !important;
+    margin: 1rem auto 0 auto !important;
     display: block !important;
 }
 
