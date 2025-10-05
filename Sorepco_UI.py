@@ -115,108 +115,97 @@ header {visibility: hidden;}
 }
 
 /* === FILE UPLOADER STYLING === */
-.upload-container {
-    max-width: 650px;
+.upload-container {                      /* wrapper around the uploader   */
+    max-width: 600px;
     margin: 3rem auto;
-    padding: 0 1.5rem;
-    z-index: 1;
+    padding: 0 1.2rem;
     position: relative;
 }
 
-/* Main container */
-[data-testid="stFileUploader"] {
-    position: relative;
-    z-index: 1;
+/* Outer <section> that Streamlit renders */
+[data-testid="stFileUploader"] section{
+    background: rgba(255,255,255,0.08)!important;
+    backdrop-filter: blur(20px)!important;
+    -webkit-backdrop-filter: blur(20px)!important;
+    border-radius: 24px!important;
+    border: 3px dashed rgba(139,92,246,.45)!important;
+    padding: 2.8rem 2rem!important;      /* smaller vertical padding       */
+    box-shadow: 0 8px 32px rgba(0,0,0,.25)!important;
+    transition: all .3s ease!important;
+    display:flex!important;             /*        🔑 make the **section** */
+    flex-direction:column!important;    /*           the main flex-column */
+    align-items:center!important;
+    justify-content:center!important;
+    gap:1.4rem!important;
 }
 
-[data-testid="stFileUploader"] section {
-    background: rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-radius: 24px !important;
-    border: 3px dashed rgba(139, 92, 246, 0.4) !important;
-    padding: 3.5rem 2.5rem !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
-    transition: all 0.3s ease !important;
+[data-testid="stFileUploader"] section:hover{
+    border-color: rgba(139,92,246,.75)!important;
+    background: rgba(139,92,246,.12)!important;
+    transform: translateY(-2px)!important;
+    box-shadow: 0 12px 38px rgba(139,92,246,.35)!important;
 }
 
-[data-testid="stFileUploader"] section:hover {
-    border-color: rgba(139, 92, 246, 0.7) !important;
-    background: rgba(139, 92, 246, 0.12) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25) !important;
+/* Force every nested flex-row to behave */
+[data-testid="stFileUploader"] section *[style*="flex-direction: row"]{
+    flex-direction:column!important;
+    align-items:center!important;
 }
 
-/* Force vertical centering - target all nested divs */
-[data-testid="stFileUploader"] section > div,
-[data-testid="stFileUploader"] section > div > div,
-[data-testid="stFileUploader"] section div[data-testid="stFileUploaderDropzone"],
-[data-testid="stFileUploader"] section div[data-testid="stFileUploaderDropzone"] > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 1.5rem !important;
-    width: 100% !important;
+/* Icon */
+[data-testid="stFileUploader"] section svg{
+    width:72px!important;
+    height:72px!important;
+    color:#8b5cf6!important;
+    margin:0!important;
 }
 
-/* Remove any flex-row layouts */
-[data-testid="stFileUploader"] section div[style*="flex-direction: row"],
-[data-testid="stFileUploader"] section div[style*="display: flex"] {
-    flex-direction: column !important;
-}
-
-/* Icon styling */
-[data-testid="stFileUploader"] section svg {
-    width: 70px !important;
-    height: 70px !important;
-    color: #8b5cf6 !important;
-    margin: 0 auto 1rem auto !important;
-    display: block !important;
-}
-
-/* Text styling */
-[data-testid="stFileUploader"] section small,
-[data-testid="stFileUploader"] section span,
+/* Helper text */
 [data-testid="stFileUploader"] section p,
-[data-testid="stFileUploader"] section label {
-    font-size: 1.1rem !important;
-    font-weight: 500 !important;
-    color: #d1d5db !important;
-    text-align: center !important;
-    display: block !important;
-    width: 100% !important;
-    margin: 0.3rem 0 !important;
+[data-testid="stFileUploader"] section span,
+[data-testid="stFileUploader"] section small{
+    font-size:1.05rem!important;
+    color:#d1d5db!important;
+    margin:0!important;
+    text-align:center!important;
+    line-height:1.4;
 }
 
-/* Hide any extra margin/padding elements */
-[data-testid="stFileUploader"] section > div > div[style*="margin"],
-[data-testid="stFileUploader"] section > div > div[style*="padding"] {
-    margin: 0 !important;
-    padding: 0 !important;
+/* Browse button */
+[data-testid="stFileUploader"] section button{
+    background:linear-gradient(135deg,#8b5cf6 0%,#a855f7 100%)!important;
+    color:#fff!important;
+    border:none!important;
+    border-radius:14px!important;
+    padding:.9rem 2.6rem!important;
+    font-weight:600!important;
+    font-size:1.03rem!important;
+    box-shadow:0 4px 20px rgba(139,92,246,.4)!important;
+    margin:0!important;                 /* centered by flex parent        */
+    transition:all .3s ease!important;
+}
+[data-testid="stFileUploader"] section button:hover{
+    transform:translateY(-2px)!important;
+    box-shadow:0 6px 28px rgba(139,92,246,.6)!important;
 }
 
-/* Button styling */
-[data-testid="stFileUploader"] button {
-    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 14px !important;
-    padding: 0.9rem 2.8rem !important;
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4) !important;
-    margin: 1rem auto 0 auto !important;
-    display: block !important;
+/* --- Decorative “OR” divider --- */
+[data-testid="stFileUploader"] section::before,
+[data-testid="stFileUploader"] section::after{
+    content:"";
+    width:60%;
+    height:1px;
+    background:linear-gradient(90deg,transparent 0%,#8b5cf6 50%,transparent 100%);
 }
-
-[data-testid="stFileUploader"] button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 28px rgba(139, 92, 246, 0.6) !important;
-    background: linear-gradient(135deg, #9b6cf7 0%, #b865f8 100%) !important;
+[data-testid="stFileUploader"] section::before{margin-top:1rem;}
+[data-testid="stFileUploader"] section::after{
+    content:"OR";
+    height:auto;
+    background:none;
+    margin:.3rem 0 .4rem 0;
+    font-weight:600;
+    font-size:1rem;
+    color:#bb83ff;
 }
 
 /* === BUTTON STYLING === */
