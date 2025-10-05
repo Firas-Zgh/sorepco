@@ -116,7 +116,7 @@ header {visibility: hidden;}
 
 /* === FILE UPLOADER STYLING === */
 .upload-container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     z-index: 1;
@@ -135,58 +135,89 @@ header {visibility: hidden;}
 }
 
 [data-testid="stFileUploaderDropzone"] {
-    border: 2px dashed rgba(255, 255, 255, 0.2) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    border: 3px dashed rgba(139, 92, 246, 0.3) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
-    border-radius: 24px !important;
-    padding: 3rem !important;
+    border-radius: 32px !important;
+    padding: 4rem 3rem !important;
     text-align: center !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    min-height: 300px !important;
-    max-width: 600px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    min-height: 350px !important;
+    max-width: 650px !important;
     margin: 0 auto !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
 [data-testid="stFileUploaderDropzone"]:hover {
-    border-color: #a855f7 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2) !important;
-    background: rgba(139, 92, 246, 0.05) !important;
+    border-color: #8b5cf6 !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 48px rgba(139, 92, 246, 0.25) !important;
+    background: rgba(139, 92, 246, 0.08) !important;
 }
 
-/* Custom upload zone content */
-[data-testid="stFileUploaderDropzone"] > div > div {
+/* Hide default upload content */
+[data-testid="stFileUploaderDropzone"] > div {
     display: none !important;
 }
 
+[data-testid="stFileUploaderDropzone"] section {
+    display: none !important;
+}
+
+/* Custom folder icon */
 [data-testid="stFileUploaderDropzone"]::before {
-    content: '☁️';
-    font-size: 3rem;
+    content: '📁';
+    font-size: 5rem;
     display: block;
-    margin-bottom: 1rem;
-    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
     transition: all 0.3s ease;
+    filter: grayscale(0%) hue-rotate(250deg);
 }
 
 [data-testid="stFileUploaderDropzone"]:hover::before {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.08);
+    filter: grayscale(0%) hue-rotate(250deg) brightness(1.2);
 }
 
+/* Upload text */
 [data-testid="stFileUploaderDropzone"]::after {
-    content: 'Glissez-déposez vos fichiers PDF\\Aou cliquez pour sélectionner';
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
+    content: 'Glissez-déposez vos fichiers PDF ici\\Aou cliquez pour les sélectionner';
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #e5e7eb;
     white-space: pre-line;
     text-align: center;
-    line-height: 1.5;
-    margin-top: 1rem;
+    line-height: 1.8;
+    margin-top: 0.5rem;
+}
+
+/* Browse button styling */
+[data-testid="stFileUploaderDropzone"] button,
+[data-testid="stFileUploader"] button {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 16px !important;
+    padding: 0.9rem 2.5rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3) !important;
+    margin-top: 1.5rem !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button:hover,
+[data-testid="stFileUploader"] button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 28px rgba(139, 92, 246, 0.5) !important;
 }
 
 /* === BUTTON STYLING === */
