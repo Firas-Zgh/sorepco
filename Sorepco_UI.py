@@ -1,6 +1,6 @@
 # ──────────────────────────────────────────────
 #  SOREPCO Automation – full Streamlit app
-#  (2025-10-05 centred uploader edition - FIXED)
+#  (2025-10-05 centred uploader edition - FIXED v2)
 # ──────────────────────────────────────────────
 import streamlit as st
 import requests
@@ -50,9 +50,7 @@ st.markdown("""
 
 /* ─── Uploader card */
 [data-testid="stFileUploader"] section {
-    /* MODIFICATION: Centering is now handled here directly */
     margin: 3rem auto !important;
-
     max-width: 420px;
     width: 100%;
     padding: 2.2rem 1.8rem;
@@ -74,14 +72,18 @@ st.markdown("""
     box-shadow: 0 12px 38px rgba(139, 92, 246, .35) !important;
 }
 
-/* inner drop-zone flex */
+/* MODIFICATION: Enhanced centering and spacing for inner drop-zone flex */
 div[data-testid="stFileUploadDropzone"] > div {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    gap: .8rem !important;
+    align-items: center !important; /* Ensure content is centered horizontally */
+    justify-content: center !important; /* Ensure content is centered vertically if space allows */
+    gap: 1rem !important; /* Increased gap for better spacing */
     min-height: unset !important;
+    width: 100% !important; /* Ensure it takes full width to center effectively */
+    text-align: center !important; /* Center text within its own container */
 }
+
 
 /* Cloud icon */
 [data-testid="stFileUploader"] section svg {
@@ -92,25 +94,29 @@ div[data-testid="stFileUploadDropzone"] > div {
 }
 
 /* Helper text */
-[data-testid="stFileUploader"] section span {
+[data-testid="stFileUploader"] section span,
+[data-testid="stFileUploader"] section p {
     font-size: 1.05rem !important;
     color: #d1d5db !important;
-    margin: 0 !important;
-    text-align: center !important;
+    margin: 0 !important; /* Keep margin 0 to let gap handle spacing */
+    text-align: center !important; /* Ensure text is centered */
+    line-height: 1.4 !important; /* Improve readability */
 }
 
 /* MODIFICATION: Correctly rebuilt "OR" divider */
+/* The 'OR' text itself is a <p> tag within the section */
 [data-testid="stFileUploader"] section > p {
     font-size: 1rem !important;
     font-weight: 600;
     color: #bb83ff !important;
-    margin: 0.5rem 0 !important;
-    width: 80%;
+    margin: 0.5rem 0 !important; /* Adjust vertical margin for OR text */
+    width: 80%; /* Control width of the OR line segment */
     display: flex;
     align-items: center;
     gap: 1rem;
     text-align: center;
 }
+/* Pseudo-elements for the lines on either side of "OR" */
 [data-testid="stFileUploader"] section > p::before,
 [data-testid="stFileUploader"] section > p::after {
     content: '';
@@ -157,7 +163,7 @@ div[data-testid="stFileUploadDropzone"] > div {
     font-size: 1.8rem;
     font-weight: 700;
     color: #a855f7;
-    margin: 2rem auto; /* Added auto for centering */
+    margin: 2rem auto;
     padding: 1.4rem;
     background: rgba(139, 92, 246, .1);
     border-radius: 16px;
@@ -214,7 +220,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ───── CENTRED UPLOADER
-# MODIFICATION: Removed the unnecessary wrapper divs
+# The centering is now handled purely by the CSS targeting `[data-testid="stFileUploader"] section`
 if 'uploader_key' not in st.session_state:
     st.session_state.uploader_key = 0
 uploaded_files = st.file_uploader("Déposez vos PDF",
