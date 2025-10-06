@@ -214,6 +214,49 @@ div[data-testid="stFileUploadDropzone"] > div {
     box-shadow: 0 6px 28px rgba(139, 92, 246, .6) !important;
 }
 
+/* === UPLOADED FILES DISPLAY === */
+[data-testid="stFileUploader"] ul {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 1rem !important;
+    margin: 1rem auto !important;
+    max-width: 420px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-testid="stFileUploader"] ul li {
+    background: rgba(139, 92, 246, 0.1) !important;
+    border: 1px solid rgba(139, 92, 246, 0.25) !important;
+    border-radius: 12px !important;
+    padding: 0.8rem 1rem !important;
+    margin: 0.5rem 0 !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    transition: all 0.2s ease !important;
+}
+
+[data-testid="stFileUploader"] ul li:hover {
+    background: rgba(139, 92, 246, 0.15) !important;
+    border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+[data-testid="stFileUploader"] ul li button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 0.3rem 0.6rem !important;
+    transition: all 0.2s ease !important;
+}
+
+[data-testid="stFileUploader"] ul li button:hover {
+    background: rgba(255, 77, 77, 0.3) !important;
+    border-color: rgba(255, 77, 77, 0.5) !important;
+}
 
 /* === BUTTON STYLING === */
 .stButton > button {
@@ -362,15 +405,20 @@ div[data-testid="stFileUploadDropzone"] > div {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* === SUCCESS MESSAGE === */
-.stSuccess {
+/* === SUCCESS MESSAGE - CUSTOM STYLING === */
+.custom-success {
     background: rgba(139, 92, 246, 0.1) !important;
     border: 1px solid rgba(139, 92, 246, 0.3) !important;
     border-radius: 16px !important;
-    backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(20px) !important;
+    padding: 1.5rem !important;
     text-align: center !important;
-    margin: 0 auto !important;
+    margin: 2rem auto !important;
     max-width: 600px !important;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.25) !important;
+    color: #a855f7 !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
 }
 
 /* === FOOTER === */
@@ -515,7 +563,8 @@ if uploaded_files:
             st.error("Impossible de démarrer le traitement.")
             st.stop()
 
-        st.info(f"✅ Job créé : `{job_id}`. Le traitement s'exécute en arrière-plan...")
+        # COMMENTED OUT - Job creation message
+        # st.info(f"✅ Job créé : `{job_id}`. Le traitement s'exécute en arrière-plan...")
 
         # 2. Poll WF3
         spinner_placeholder = st.empty()
@@ -539,7 +588,15 @@ if uploaded_files:
         if result:
             st.session_state.processing_time = round(time.time() - st.session_state.start_time, 1)
             st.session_state.results = result
-            st.success(f"Traitement terminé – statut : **{result.get('status','?')}**")
+            
+            # Custom styled success message
+            status = result.get('status', '?')
+            status_text = "Complété" if status == "completed" else status
+            st.markdown(f"""
+            <div class="custom-success">
+                ✅ Traitement terminé – statut : <strong>{status_text}</strong>
+            </div>
+            """, unsafe_allow_html=True)
         else:
             st.error("❌ Aucun résultat reçu depuis le backend.")
 
