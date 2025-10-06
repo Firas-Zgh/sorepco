@@ -66,7 +66,7 @@ header {visibility: hidden;}
 /* === HERO SECTION === */
 .hero-container {
     position: relative;
-    margin: 2rem auto 3rem auto;
+    margin: 2rem auto 1rem auto;
     max-width: 900px;
     padding: 0 1.5rem;
     z-index: 1;
@@ -120,7 +120,7 @@ header {visibility: hidden;}
 /* === FILE UPLOADER STYLING === */
 .upload-container {
     max-width: 800px;
-    margin: 3rem auto;
+    margin: 1rem auto;
     padding: 0 1.5rem;
     z-index: 1;
     position: relative;
@@ -609,9 +609,11 @@ if uploaded_files:
                 <div class="loader"></div>
                 <div class="spinner-text">⚙️ Traitement en cours...</div>
                 <div style="color: #b8c6db; font-size: 1rem; margin-top: 1rem;">
-                    Analyse des documents PDF<br>
-                    Extraction des données<br>
-                    Attribution des codes NGP
+                    Extraction OCR multi-pages<br>
+                    Analyse sémantique par agents IA<br>
+                    Classification intelligente des données<br>
+                    Attribution automatique des codes NGP<br>
+                    Validation et structuration finale
                 </div>
             </div>
             """, unsafe_allow_html=True)
