@@ -244,6 +244,7 @@ div[data-testid="stFileUploadDropzone"] > div {
     border-color: rgba(139, 92, 246, 0.4) !important;
 }
 
+/* X button alignment */
 [data-testid="stFileUploader"] ul li button {
     background: rgba(255, 255, 255, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -251,6 +252,8 @@ div[data-testid="stFileUploadDropzone"] > div {
     border-radius: 8px !important;
     padding: 0.3rem 0.6rem !important;
     transition: all 0.2s ease !important;
+    margin-left: auto !important;  /* ADD THIS LINE */
+    order: 2 !important;            /* ADD THIS LINE */
 }
 
 [data-testid="stFileUploader"] ul li button:hover {
@@ -258,6 +261,11 @@ div[data-testid="stFileUploadDropzone"] > div {
     border-color: rgba(255, 77, 77, 0.5) !important;
 }
 
+/* Ensure filename stays on the left */
+[data-testid="stFileUploader"] ul li > div:first-child {
+    order: 1 !important;
+    flex-grow: 1 !important;
+}
 /* === BUTTON STYLING === */
 .stButton > button {
     background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
