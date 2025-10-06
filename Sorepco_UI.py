@@ -535,16 +535,16 @@ if st.session_state.get("results"):
         else:
             df = pd.DataFrame([data])
 
-        processing_time = round(st.session_state.get("processing_time", 0), 1)
+        #processing_time = round(st.session_state.get("processing_time", 0), 1)
 
-        if processing_time >= 60:
-            minutes = int(processing_time // 60)
-            seconds = int(processing_time % 60)
-            time_text = f"⏱ Temps de traitement : {minutes}:{seconds:02d}"
-        else:
-            time_text = f"⏱ Temps de traitement : {processing_time} secondes"
+        #if processing_time >= 60:
+        #    minutes = int(processing_time // 60)
+        #    seconds = int(processing_time % 60)
+        #    time_text = f"⏱ Temps de traitement : {minutes}:{seconds:02d}"
+        #else:
+         #   time_text = f"⏱ Temps de traitement : {processing_time} secondes"
 
-        st.markdown(f'<div class="big-time">{time_text}</div>', unsafe_allow_html=True)
+        #st.markdown(f'<div class="big-time">{time_text}</div>', unsafe_allow_html=True)
 
         if not df.empty:
             st.markdown(
@@ -594,8 +594,8 @@ if st.session_state.get("results"):
 # ================================
 st.markdown("""
 <div class="footer">
-    Conçu par <strong>Firas Zouaghi</strong> • Propulsé par l'IA nouvelle génération<br>
-    📧 <a href="mailto:zgh.firas@gmail.com" style="color: inherit; text-decoration: none;">your.email@example.com</a> • 
+    Création par <strong>Firas Zouaghi</strong> • Propulsé par l'IA nouvelle génération<br>
+    Contact 📧 <a href="mailto:zgh.firas@gmail.com" style="color: inherit; text-decoration: none;">zgh.firas@gmail.com</a> • 
     <a href="https://www.linkedin.com/in/firas-zouaghi-309884164/" target="_blank" style="color: inherit; text-decoration: none;">
         <i class="fab fa-linkedin"></i> LinkedIn
     </a>
