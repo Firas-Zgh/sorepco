@@ -590,7 +590,7 @@ if uploaded_files:
         st.session_state.start_time = time.time()
 
         # 1. Submit files to WF1
-        with st.spinner("📤 Envoi des fichiers..."):
+        with st.spinner("Envoi des fichiers..."):
             job_id = submit_job(uploaded_files)
 
         if not job_id:
