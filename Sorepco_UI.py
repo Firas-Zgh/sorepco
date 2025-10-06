@@ -126,71 +126,94 @@ header {visibility: hidden;}
     position: relative;
 }
 
-/* Target all file uploader elements */
-[data-testid="stFileUploader"] {
-    z-index: 1 !important;
-}
-
-[data-testid="stFileUploader"] > div {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-[data-testid="stFileUploaderDropzone"] {
-    border: 2px dashed rgba(255, 255, 255, 0.2) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+/* ─── Uploader card */
+[data-testid="stFileUploader"] section {
+    margin: 3rem auto !important;
+    max-width: 420px;
+    width: 100%;
+    padding: 2.2rem 1.8rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, .08) !important;
     backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-radius: 24px !important;
-    padding: 3rem !important;
-    text-align: center !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    min-height: 300px !important;
-    max-width: 600px !important;
-    margin: 0 auto !important;
+    border: 3px dashed rgba(139, 92, 246, .45) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .25) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.15rem !important;
+    transition: .3s all;
+}
+
+[data-testid="stFileUploader"] section:hover {
+    border-color: rgba(139, 92, 246, .75) !important;
+    background: rgba(139, 92, 246, .12) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 38px rgba(139, 92, 246, .35) !important;
+}
+
+/* inner drop-zone flex */
+div[data-testid="stFileUploadDropzone"] > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    width: 100% !important;
 }
 
-[data-testid="stFileUploaderDropzone"]:hover {
-    border-color: #a855f7 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2) !important;
-    background: rgba(139, 92, 246, 0.05) !important;
+/* Icon spacing */
+[data-testid="stFileUploader"] section svg {
+    width: 68px !important;
+    height: 68px !important;
+    color: #8b5cf6 !important;
+    margin: 0 auto 1rem auto !important;
 }
 
-/* Custom upload zone content */
-[data-testid="stFileUploaderDropzone"] > div > div {
-    display: none !important;
+/* Helper text */
+[data-testid="stFileUploader"] section span {
+    font-size: 1.05rem !important;
+    color: #d1d5db !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
 }
 
-[data-testid="stFileUploaderDropzone"]::before {
-    content: '☁️';
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-[data-testid="stFileUploaderDropzone"]:hover::before {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-[data-testid="stFileUploaderDropzone"]::after {
-    content: 'Glissez-déposez vos fichiers PDF\\Aou cliquez pour sélectionner';
-    font-size: 1.1rem;
+/* "OR" Divider */
+[data-testid="stFileUploader"] section > p {
+    font-size: 1rem !important;
     font-weight: 600;
-    color: #ffffff;
-    white-space: pre-line;
-    text-align: center;
-    line-height: 1.5;
-    margin-top: 1rem;
+    color: #bb83ff !important;
+    margin: 0.5rem 0 !important;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
+
+[data-testid="stFileUploader"] section > p::before,
+[data-testid="stFileUploader"] section > p::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #8b5cf6 50%, transparent 100%);
+}
+
+/* Browse button */
+[data-testid="stFileUploader"] section button {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: .9rem 2.6rem !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, .4) !important;
+    transition: .3s all;
+}
+
+[data-testid="stFileUploader"] section button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 28px rgba(139, 92, 246, .6) !important;
+}
+
 
 /* === BUTTON STYLING === */
 .stButton > button {
