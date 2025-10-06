@@ -222,8 +222,8 @@ div[data-testid="stFileUploadDropzone"] > div {
     border-radius: 16px !important;
     padding: 1rem !important;
     margin: 1rem auto !important;
-    max-width: 600px !important;  /* INCREASED from 420px */
-    width: auto !important;  /* ADDED */
+    max-width: 600px !important;
+    width: auto !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -238,7 +238,7 @@ div[data-testid="stFileUploadDropzone"] > div {
     align-items: center !important;
     justify-content: space-between !important;
     transition: all 0.2s ease !important;
-    min-width: 0 !important;  /* ADDED */
+    min-width: 0 !important;
 }
 
 [data-testid="stFileUploader"] ul li:hover {
@@ -246,14 +246,32 @@ div[data-testid="stFileUploadDropzone"] > div {
     border-color: rgba(139, 92, 246, 0.4) !important;
 }
 
-/* Filename container - allows wrapping */
+/* Filename container - allows wrapping and vertical stacking */
 [data-testid="stFileUploader"] ul li > div:first-child {
     order: 1 !important;
     flex-grow: 1 !important;
-    overflow-wrap: break-word !important;  /* ADDED */
-    word-break: break-word !important;  /* ADDED */
-    min-width: 0 !important;  /* ADDED */
-    padding-right: 1rem !important;  /* ADDED - spacing before X button */
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    min-width: 0 !important;
+    padding-right: 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.3rem !important;
+}
+
+/* Filename styling */
+[data-testid="stFileUploader"] ul li > div:first-child > span:first-child {
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+}
+
+/* File size styling - displayed below filename */
+[data-testid="stFileUploader"] ul li > div:first-child > small,
+[data-testid="stFileUploader"] ul li > div:first-child > span:last-child {
+    font-size: 0.8rem !important;
+    color: #b8c6db !important;
+    opacity: 0.8 !important;
+    display: block !important;
 }
 
 /* X button alignment */
@@ -266,7 +284,8 @@ div[data-testid="stFileUploadDropzone"] > div {
     transition: all 0.2s ease !important;
     margin-left: auto !important;
     order: 2 !important;
-    flex-shrink: 0 !important;  /* ADDED - prevents button from shrinking */
+    flex-shrink: 0 !important;
+    align-self: flex-start !important;
 }
 
 [data-testid="stFileUploader"] ul li button:hover {
