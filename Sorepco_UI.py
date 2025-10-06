@@ -22,6 +22,9 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* === Footer Linkedin icon === */
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 /* === FORCE DARK THEME === */
 .stApp {
     background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%) !important;
@@ -476,7 +479,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 if uploaded_files:
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
-        start_clicked = st.button("🚀 START", key="start_button", use_container_width=True)
+        start_clicked = st.button("START", key="start_button", use_container_width=True)
 
     if start_clicked:
         st.session_state.start_time = time.time()
@@ -500,9 +503,9 @@ if uploaded_files:
                 <div class="loader"></div>
                 <div class="spinner-text">⚙️ Traitement en cours...</div>
                 <div style="color: #b8c6db; font-size: 1rem; margin-top: 1rem;">
-                    🔍 Analyse des documents PDF<br>
-                    🧠 Extraction des données<br>
-                    🏷️ Attribution des codes NGP
+                    Analyse des documents PDF<br>
+                    Extraction des données<br>
+                    Attribution des codes NGP
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -513,7 +516,7 @@ if uploaded_files:
         if result:
             st.session_state.processing_time = round(time.time() - st.session_state.start_time, 1)
             st.session_state.results = result
-            st.success(f"🎯 Traitement terminé – statut : **{result.get('status','?')}**")
+            st.success(f"Traitement terminé – statut : **{result.get('status','?')}**")
         else:
             st.error("❌ Aucun résultat reçu depuis le backend.")
 
@@ -565,7 +568,7 @@ if st.session_state.get("results"):
 
             with left_col:
                 st.download_button(
-                    label="📥 Exporter vers Excel",
+                    label="Exporter vers Excel",
                     data=excel_io.getvalue(),
                     file_name=f"sorepco_export_{int(time.time())}.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -573,7 +576,7 @@ if st.session_state.get("results"):
                 )
 
             with right_col:
-                if st.button("🔄 Nouveau traitement", key="new_treatment_fixed"):
+                if st.button("Nouveau traitement", key="new_treatment_fixed"):
                     for key in list(st.session_state.keys()):
                         if key.startswith(('results', 'processing_time', 'start_time')):
                             del st.session_state[key]
@@ -591,6 +594,10 @@ if st.session_state.get("results"):
 # ================================
 st.markdown("""
 <div class="footer">
-    ✨ Conçu avec passion par <strong>Firas Zouaghi</strong> • Propulsé par l'IA nouvelle génération
+    Conçu par <strong>Firas Zouaghi</strong> • Propulsé par l'IA nouvelle génération<br>
+    📧 <a href="mailto:zgh.firas@gmail.com" style="color: inherit; text-decoration: none;">your.email@example.com</a> • 
+    <a href="https://www.linkedin.com/in/firas-zouaghi-309884164/" target="_blank" style="color: inherit; text-decoration: none;">
+        <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
 </div>
 """, unsafe_allow_html=True)
